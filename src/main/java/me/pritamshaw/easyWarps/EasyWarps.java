@@ -12,6 +12,7 @@ import me.pritamshaw.easyWarps.warp.WarpsManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,6 +25,8 @@ public final class EasyWarps extends JavaPlugin {
         // Plugin startup logic
 
         saveDefaultConfig();
+
+        Metrics metrics = new Metrics(this, 25202);
 
         warpsManager = new WarpsManager(this);
 
