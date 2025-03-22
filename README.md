@@ -1,7 +1,7 @@
-# EasyWarp - An easy and simple warps plugin.
+# EasyWarps - An easy and simple warps plugin.
 
 ## 📥 Installation
-1. **Download** the latest JAR from [Releases](https://github.com/Pritam11638/EasyWarp/releases).
+1. **Download** the latest JAR from [Releases](https://github.com/Pritam11638/EasyWarps/releases).
 2. **Place** it in your `plugins/` folder.
 3. **Restart** your server.
 4. **Enjoy!** 🎉
@@ -14,7 +14,7 @@
 | `/warp <warp-name>` | Teleport to a warp. | `No permission required.` |
 
 ## ❓ Found Bugs?
-- **Report Bugs**: Open a [GitHub Issue](https://github.com/Pritam11638/EasyWarp/issues)
+- **Report Bugs**: Open a [GitHub Issue](https://github.com/Pritam11638/EasyWarps/issues)
 
 ## 📜 License
 EternalSky is licensed under the [MIT License](LICENSE).
