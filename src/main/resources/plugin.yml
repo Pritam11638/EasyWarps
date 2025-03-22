@@ -1,0 +1,9 @@
+name: EasyWarps
+version: '1.0.0-STABLE'
+main: me.pritamshaw.easyWarps.EasyWarps
+api-version: '1.21'
+prefix: EasyWarps
+load: POSTWORLD
+authors: [ Pritam ]
+description: An Easy Warps Plugin.
+website: github.com/Pritam11638
