@@ -26,7 +26,7 @@ public final class EasyWarps extends JavaPlugin {
 
         saveDefaultConfig();
 
-        Metrics metrics = new Metrics(this, 25202);
+        new Metrics(this, 25202);
 
         warpsManager = new WarpsManager(this);
 

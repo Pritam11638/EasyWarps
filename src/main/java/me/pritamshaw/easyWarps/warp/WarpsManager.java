@@ -63,9 +63,7 @@ public class WarpsManager {
         return getWarp(warpName) != null;
     }
 
-    public boolean warpPlayer(Player player, String warpName) {
-        AtomicBoolean found = new AtomicBoolean(false);
-
+    public void warpPlayer(Player player, String warpName) {
         warps.stream().filter(warp -> warp.name().equals(warpName)).findFirst().ifPresent(warp -> {
             player.sendMessage(
                     Component
@@ -75,11 +73,7 @@ public class WarpsManager {
             );
 
             player.teleport(warp.location());
-
-            found.set(true);
         });
-
-        return found.get();
     }
 
     public Set<Warp> getAllWarps() {
@@ -91,9 +85,7 @@ public class WarpsManager {
 
         config.getKeys(false).forEach(warp -> config.set(warp, null));
 
-        warps.forEach(warp -> {
-            config.set(warp.name(), warp.location());
-        });
+        warps.forEach(warp -> config.set(warp.name(), warp.location()));
 
         plugin.saveConfig();
     }
