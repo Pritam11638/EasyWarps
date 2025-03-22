@@ -17,4 +17,4 @@
 - **Report Bugs**: Open a [GitHub Issue](https://github.com/Pritam11638/EasyWarps/issues)
 
 ## 📜 License
-EternalSky is licensed under the [MIT License](LICENSE).
+EasyWarps is licensed under the [MIT License](LICENSE).
