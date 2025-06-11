@@ -1,0 +1,8 @@
+name: EasyWarps
+version: '${version}'
+main: com.pritam.easywarps.EasyWarps
+description: An easy-to-use warp plugin for Minecraft servers.
+authors:
+  - Pritam
+website: https://github.com/Pritam11638/EasyWarps
+api-version: 1.21.5
