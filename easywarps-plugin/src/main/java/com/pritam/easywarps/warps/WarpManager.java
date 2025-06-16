@@ -1,20 +1,15 @@
 package com.pritam.easywarps.warps;
 
+import com.pritam.easywarps.api.warps.Warp;
+import lombok.Getter;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
-public class WarpManager {
-    private final HashMap<String, Warp> warps = new HashMap();
-
-    public List<String> getWarpList() {
-        return new ArrayList<>(warps.keySet());
-    }
+public class WarpManager implements com.pritam.easywarps.api.warps.WarpManager {
+    @Getter private final HashMap<String, Warp> warps = new HashMap<>();
 
     public void setWarp(String name, Warp warp) {
         warps.put(name, warp);
@@ -43,6 +38,4 @@ public class WarpManager {
                     .color(NamedTextColor.GREEN));
         }
     }
-
-    // TODO: Implement a method to load warps from the configuration file
 }
