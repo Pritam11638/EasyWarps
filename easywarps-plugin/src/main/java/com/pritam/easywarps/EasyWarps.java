@@ -12,13 +12,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.IOException;
 
 public class EasyWarps extends JavaPlugin implements EasyWarpsApi {
-    @Getter private static EasyWarps instance;
-    @Getter private static WarpManager warpManager;
+    @Getter
+    private static EasyWarps instance;
+    @Getter
+    private WarpManager warpManager;
+    @Getter
+    private MainConfig mainConfig;
 
     @Override
     public void onEnable() {
-        getLogger().info("Enabling...");
-
         instance = this;
 
         getServer().getServicesManager().register(
@@ -35,20 +37,24 @@ public class EasyWarps extends JavaPlugin implements EasyWarpsApi {
                 }
         );
 
+        try {
+            mainConfig = new MainConfig(this);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         warpManager = new WarpManager();
 
-        MainConfig.getWarps().forEach((name, warp) -> warpManager.setWarp(name, warp));
+        mainConfig.getWarps().forEach((name, warp) -> warpManager.setWarp(name, warp));
     }
 
     @Override
     public void onDisable() {
         try {
-            MainConfig.saveWarps(warpManager.getWarps());
+            mainConfig.saveWarps(warpManager.getWarps());
         } catch (IOException e) {
             getLogger().severe("Failed to save warps: " + e.getMessage());
         }
 
         getLogger().info("EasyWarps has been disabled!");
     }
-
 }

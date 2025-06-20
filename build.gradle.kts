@@ -47,6 +47,7 @@ subprojects {
 }
 
 tasks.register("buildAll") {
+    dependsOn("clean")
     dependsOn(":easywarps-plugin:shadowJar")
     group = "build"
     description = "Builds all modules and creates a combined jar"

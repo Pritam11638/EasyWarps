@@ -29,25 +29,27 @@ public class Config {
     private final YamlConfiguration config;
 
     public Config(String name, File folder, JavaPlugin plugin) {
-        File fileT = new File(folder, name + ".yml");
+        this.file = new File(folder, name + ".yml");
 
         try {
-            fileT.mkdirs();
-
-            if (!fileT.exists()) {
-                fileT.createNewFile();
+            if (!folder.exists() && !folder.mkdirs()) {
+                throw new IOException("Failed to create config folder: " + folder.getAbsolutePath());
             }
-        } catch (IOException e) {
-            plugin.getLogger().severe("Occured errors while initializing this.config file: " + name + ".yml");
-            plugin.getLogger().severe(e.getMessage());
-            file = null;
-            this.config = null;
-            Bukkit.getPluginManager().disablePlugin(plugin);
-            return;
-        }
 
-        this.file = fileT;
-        this.config = YamlConfiguration.loadConfiguration(fileT);
+            if (!file.exists() && !file.createNewFile()) {
+                throw new IOException("Failed to create config file: " + file.getAbsolutePath());
+            }
+
+            this.config = YamlConfiguration.loadConfiguration(file);
+
+            config.options().copyDefaults(true);
+            save();
+        } catch (IOException e) {
+            plugin.getLogger().severe("Error occurred while initializing config file: " + name + ".yml");
+            plugin.getLogger().severe(e.getMessage());
+            Bukkit.getPluginManager().disablePlugin(plugin);
+            throw new RuntimeException("Could not initialize configuration", e);
+        }
     }
 
     public @NotNull String saveToString() {

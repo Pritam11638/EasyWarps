@@ -19,7 +19,17 @@ java {
 tasks.shadowJar {
     archiveBaseName.set("EasyWarps")
     archiveClassifier.set("")
-    from(project(":easywarps-api").sourceSets.main.get().output)
     relocate("org.bstats", "com.pritam.easywarps.libs.bstats")
     minimize()
 }
+
+tasks.processResources {
+    val props = mapOf("version" to project.version)
+    inputs.properties(props)
+    filteringCharset = "UTF-8"
+
+    filesMatching("paper-plugin.yml") {
+        expand(props)
+    }
+}
+
